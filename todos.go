@@ -3,6 +3,8 @@ package main
 	
 import (
     "fmt"
+    "os"
+    "bufio"
 )
 
 func help(){
@@ -20,6 +22,29 @@ func help(){
 	fmt.Println(output_str)
 }
 
+func show_done_task_list(){
+    file,err := os.Open("todos.json")
+
+    if(err != nil){
+        fmt.Println("error = ",err)
+    }
+
+    data:= bufio.NewScanner(file)
+
+
+    var lines[]string
+
+    for data.Scan(){
+        lines = append(lines, data.Text())
+    }
+    file.Close()
+
+    for index,line:= range lines{
+        fmt.Println(index," ",line)
+    }
+}
+
 func main(){
-	help()
+	// help()
+    show_done_task_list()
 }
