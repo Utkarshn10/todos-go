@@ -6,6 +6,5 @@
 ## Installation
 1. Fork and clone the repository in your local machine
 2. Create a virtual environment
-3. Install requirements from requirements.txt using `pip install -r requirements.txt`
-4. Try running following command:
+3. Try running following command:
    - `go run todos.go`
