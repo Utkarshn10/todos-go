@@ -28,6 +28,8 @@ func help() {
 	fmt.Println(output_str)
 }
 
+
+// read json file
 func readFile() ([]byte, error) {
 	file, err := os.Open("todos.json")
 
@@ -46,6 +48,8 @@ func readFile() ([]byte, error) {
 	return data, nil
 }
 
+
+// write to json file
 func writeToFile(updatedData []byte) {
 	if err := ioutil.WriteFile("todos.json", updatedData, 0644); err != nil {
 		fmt.Println("Error writing file:", err)
@@ -54,6 +58,8 @@ func writeToFile(updatedData []byte) {
 	return
 }
 
+
+// add task to list
 func addTask(task string) {
 	data, error := readFile()
 
@@ -80,6 +86,7 @@ func addTask(task string) {
 	fmt.Println("Task Added")
 }
 
+// delete task from list
 func deleteTask(taskKey string) {
 	data, error := readFile()
 
@@ -112,6 +119,7 @@ func deleteTask(taskKey string) {
 	fmt.Println("Task Deleted")
 }
 
+// update task based on index
 func updateTask(taskIndex int, task string) {
 	data, error := readFile()
 
@@ -140,6 +148,8 @@ func updateTask(taskIndex int, task string) {
 
 func completedTasks(task string) {}
 
+
+// remove tasks from list and store them in another json file named completed.json. This function currently only deletes the tasks
 func markTaskAsDone(taskKey string) {
 	data, error := readFile()
 
@@ -172,6 +182,8 @@ func markTaskAsDone(taskKey string) {
 	fmt.Println("Task Completed 🎉")
 }
 
+
+// show tasks which are in the list
 func showActiveTaskList() {
 	file, err := os.Open("todos.json")
 
